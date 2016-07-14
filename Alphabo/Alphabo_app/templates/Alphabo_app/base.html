@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head lang="en">
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    {% block css %} 
+    <link rel="stylesheet" type="text/css" 
+          href="{% static 'Alphabo_app/css/base.css' %}" />
+    {% endblock %}
+    {% block javascript %}
+      <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js">
+      </script>
+      <script>
+    // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyB9xJrcozUiwH41Fw3SoJ6lr4FsgY4qKsA",
+          authDomain: "alphabo-79bbc.firebaseapp.com",
+          databaseURL: "https://alphabo-79bbc.firebaseio.com",
+          storageBucket: "alphabo-79bbc.appspot.com",
+        };
+        firebase.initializeApp(config);
+      </script>
+    {% endblock %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+      <div class="container">
+        <div class="content">
+          <div id="mainbai">
+            {% block mainbar %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    {% endblock %}
+    {% block outofcontainer %}
+    {% endblock %}
+  </body>
+</html>
+
