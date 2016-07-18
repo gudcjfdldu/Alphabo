@@ -1,0 +1,41 @@
+.kawi-bawi-bo{
+  
+}
+
+.kawi-window{
+  display: inline-block;
+}
+
+.bawi-window{
+  display: inline-block;
+}
+
+.bo-window{
+  display: inline-block;
+}
+
+.left-user-window{
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.right-computer-window{
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.game-window-wrapper{
+  display: inline-block;
+}
+
+.kawibawibo-window-wrapper{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.game-window-wrapper{
+  margin-left: auto;
+  margin-right: auto;
+}

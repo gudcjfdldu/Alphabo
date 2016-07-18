@@ -1,0 +1,72 @@
+{% extends "Alphabo_app/base.html" %} 
+{% load staticfiles %}
+
+{% block css %}
+  {{ block.super }}
+  <script src="{% static 'Alphabo_app/libs/jquery.js' %}"></script>
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'Alphabo_app/css/game.css' %}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
+  </script> 
+  <script type="text/javascript">
+    function initIndex(){
+    }
+
+    window.onload = function() {
+      initIndex(); 
+    };
+   
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $('#myForm input').on('change', function() {
+      });
+    });
+  </script>
+    
+{% endblock %}
+
+{% block mainbar %}
+  <div class="game-window-wrapper">
+    <div class="left-user-window">
+    {% if kawi %}
+      <img src="{% static 'Alphabo_app/images/kawi.png' %}" />
+    {% elif bawi %}
+      <img src="{% static 'Alphabo_app/images/bawi.png' %}" />       {% elif bo %}
+      <img src="{% static 'Alphabo_app/images/bo.png' %}" />
+    {% endif %}
+    </div>
+  </div>
+
+  <div class="game-window-wrapper">
+    <div class="right-computer-window">
+
+    </div>
+  </div>
+
+  <div class="kawibawibo-window-wrapper">
+    <div class="kawi-window">
+      <img src="{% static 'Alphabo_app/images/kawi.png' %}" />  
+      <label class="checkbox-inline"><input type="checkbox" 
+             value="">kawi</label>
+    </div>
+    <div class="bawi-window">
+      <img src="{% static 'Alphabo_app/images/bawi.png' %}" />
+      <label class="checkbox-inline"><input type="checkbox"
+             value="">bawi</label>
+    </div>
+    <div class="bo-window">
+      <img src="{% static 'Alphabo_app/images/bo.png' %}" />
+      <label class="checkbox-inline"><input type="checkbox"
+             value="">bo</label>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block outofcontainer %}
+
+{% endblock %}

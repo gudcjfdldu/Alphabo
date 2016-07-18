@@ -38,8 +38,8 @@ def login_required(error_code=None):
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the Alphabo index.")
-
+    if request.method == 'GET':
+	return render(request, 'Alphabo_app/index.html')
 
 def login_handler(request):
     if request.method == 'GET':
@@ -68,13 +68,19 @@ def login_handler(request):
 
 def login_facebook(request):
     if request.method == 'GET':
-        return render(request, 'Alphabo_app/facebook_login.html')
+        return render(request, 'Alphabo_app/facebook-redirect.html')
 
 
 def logout_handler(request):
     if request.method == 'GET':
         logout(request)
         return HttpResponseRedirect(reverse('index'))
+
+
+def game_handler(request):
+    if request.method == 'GET':
+    	return render(request, 'Alphabo_app/game.html')
+
 
 
 def register(request):

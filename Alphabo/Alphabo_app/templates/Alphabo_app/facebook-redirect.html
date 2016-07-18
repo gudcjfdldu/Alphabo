@@ -16,6 +16,28 @@ limitations under the License.
 -->
 <html>
 <head>
+  <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+
+  <script>
+
+    // Initialize Firebase
+
+    var config = {
+
+      apiKey: "AIzaSyB9xJrcozUiwH41Fw3SoJ6lr4FsgY4qKsA",
+
+      authDomain: "alphabo-79bbc.firebaseapp.com",
+
+      databaseURL: "https://alphabo-79bbc.firebaseio.com",
+
+      storageBucket: "alphabo-79bbc.appspot.com",
+
+    };
+
+    firebase.initializeApp(config);
+
+  </script>
+
   <meta charset=utf-8 />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Facebook Sign In Example</title>
@@ -33,7 +55,7 @@ limitations under the License.
        *********************************************************************************************************************** -->
 
   <script type="text/javascript">
-
+    
     /**
      * Function called when clicking the Login/Logout button.
      */

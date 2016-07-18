@@ -1,0 +1,58 @@
+{% extends "Alphabo_app/base.html" %} 
+{% load staticfiles %}
+
+{% block css %}
+  {{ block.super }}
+  <script src="{% static 'Alphabo_app/libs/jquery.js' %}"></script>
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'Alphabo_app/css/index.css' %}" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
+  </script> 
+  <script type="text/javascript">
+    function initIndex(){
+      firebase.auth().onAuthStateChanged(function(user) {
+	if(user){
+	 var displayName = user.displayName;
+         var email = user.email;
+         var emailVerified = user.emailVerified;
+	 var uid = user.uid; 
+	 document.querySelector('#user-name').innerHTML = displayName;
+  	}
+	else{
+	  window.location.replace("http://alphabo.tk:8000/alphabo/login/");
+	}
+        });
+    }
+
+    window.onload = function() {
+      initIndex(); 
+    };
+   
+  </script>
+
+
+{% endblock %}
+
+{% block mainbar %}
+  <div class="user-window-wrapper">
+    <div id="user-name-wrapper">
+     <div id="user-description">
+       username: 
+     </div>
+     <div id="user-name"> 
+     </div>
+  </div>
+  <div class="user-window-wrapper">
+    <div id=game-start-button">
+      <form action="http://alphabo.tk:8000/alphabo/game/">
+        <button class="btn" type="submit">Game Start</button>
+      </form> 
+    </div>
+  </div> 
+{% endblock %}
+
+{% block outofcontainer %}
+
+{% endblock %}
