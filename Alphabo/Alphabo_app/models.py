@@ -8,6 +8,8 @@ class UserProfile(models.Model):
     email = models.CharField(max_length=200) 
     install_time = models.IntegerField(default=0)
     exit_time = models.IntegerField(default=0)
+    play_time = models.IntegerField(default=0)
+    last_time = models.IntegerField(default=0)
 
 
 
