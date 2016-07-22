@@ -5,3 +5,15 @@
 #user-name{
   display: inline-block;
 }
+
+.main-introduce{
+  color: black;
+}
+
+.subheading{
+  color: black;
+}
+
+.post-title{
+  font-size: 20px !important;
+}

@@ -11,14 +11,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
   </script> 
 
+  <script src="{% static 'Alphabo_app/js/login.js' %}" />
+  </script>
+
 {% endblock %}
 
 {% block mainbar %}
   <div class="row">
-    <h1 class="text-center">Login </h1>
+    <h1 class="text-center">Welcome to Alphabo </h1>
     <p class="text-center"><a href="#" class="btn btn-primary btn-log"
        role="button" data-toggle="modal" data-target="#login-modal">
-       Open Login Modal</a></p>
+       Login </a></p>
+
+    {% if error_message %}
+    <p> {{ error_message }} </p>
+    {% endif %}
+           
   </div>
 
 {% endblock %}
@@ -36,7 +44,8 @@
         </div>
 
         <div id="div-forms">
-          <form id="login-form">
+          <form id="login-form" action="{% url 'login' %}" method="post">
+          {% csrf_token %}
             <div class="modal-body">
               <div id="div-login-msg">
                 <div id="icon-login-msg" class="glyphicon 
@@ -45,27 +54,23 @@
               </div>
               <input id="login_username" class="form-control" type="text" placeholder="Username (type ERROR for error effect)" name="username">
               <input id="login_password" class="form-control" type="password" placeholder="Password" name="password">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"> Remember me
-                </label>
-              </div> 
             </div>
             <div class="modal-footer">
               <div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">
-			Login</button>
+			Login </button>
               </div>
-	      <div>
-                <a href="{% url 'facebook' %}">
+	      <div class="facebook-button-wrapper">
+                <button type="button" class="btn btn-primary facebook-login-button">
+                  <a href="{% url 'facebook' %}" class="facebook-button">
                   Login with facebook
-                </a>
+                  </a>
+                </button>
               </div>
-              <div>
-                <button id="login_lost_btn" type="button" class="btn btn-link">
-                        Lost Password?</button>
-                <button id="login_register_btn" type="button"
-                        class="btn btn-link">Register</button>
+              <div class="register-button-wrapper">
+                <button type="button" class="btn btn-primary register-button">
+                  <a href="{% url 'register' %}" class="user-register">Register</a>
+                </button>
               </div>
             </div>
           </form>

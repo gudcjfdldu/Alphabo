@@ -1,0 +1,22 @@
+.img-circle{
+  width: 50%;
+}
+
+.facebook-button{
+  text-decoration: none;
+  color: white;
+}
+
+.user-register{
+  color: white;
+}
+
+.facebook-button-wrapper{
+  display: inline-block;
+  padding: 10px 0g
+}
+
+.register-button-wrapper{
+  display: inline-block;
+  padding: 10px 0;
+}

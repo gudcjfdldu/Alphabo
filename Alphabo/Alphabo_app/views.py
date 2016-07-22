@@ -39,10 +39,17 @@ def login_required(error_code=None):
 
 def index(request):
     if request.method == 'GET':
+	if request.user.is_authenticated():
+            current_user = request.user
+            context = {'current_user': current_user }
+            return render(request, 'Alphabo_app/index.html', context)
 	return render(request, 'Alphabo_app/index.html')
+
 
 def login_handler(request):
     if request.method == 'GET':
+        if request.user.is_authenticated():
+          return HttpResponseRedirect(reverse('index'))
         return render(request, 'Alphabo_app/login.html')
 
     elif request.method == 'POST':
@@ -74,16 +81,20 @@ def login_facebook(request):
 def logout_handler(request):
     if request.method == 'GET':
         logout(request)
-        return HttpResponseRedirect(reverse('index'))
+        return HttpResponseRedirect(reverse('login'))
 
 
 def game_handler(request):
     if request.method == 'GET':
-    	return render(request, 'Alphabo_app/game.html')
+        if request.user.is_authenticated():
+            current_user = request.user
+            context = {'current_user': current_user }
+            return render(request, 'Alphabo_app/game.html', context);
+        return render(request, 'Alphabo_app/game.html')
 
 
 
-def register(request):
+def register_handler(request):
     if request.method == 'GET':
         return render(request, 'Alphabo_app/register.html')
     elif request.method == 'POST':
@@ -107,4 +118,19 @@ def register(request):
             UserProfile.objects.create(user=user, email=user.email)
             return HttpResponseRedirect(reverse('index'))
 
+       
+def time_handler(request):
+    if request.method == 'POST':
+        install_time = request.POST.get('installtime', '')
+        exit_time = request.POST.get('exittime', '')
         
+
+
+
+def contact_handler(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated():
+            current_user = request.user
+            context = {'current_user': current_user }
+            return render(request, 'Alphabo_app/profile.html', context)
+        return render(request, 'Alphabo_app/profile.html') 

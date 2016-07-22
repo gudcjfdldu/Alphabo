@@ -6,53 +6,197 @@
   <script src="{% static 'Alphabo_app/libs/jquery.js' %}"></script>
   <link rel="stylesheet" type="text/css"
         href="{% static 'Alphabo_app/css/index.css' %}" />
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'Alphabo_app/css/clean-blog.min.css' %}" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+  <!-- import index.js -->
+  <script src="{% static 'Alphabo_app/js/index.js' %}" />
+  </script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="{% static 'Alphabo_app/js/jqBootstrapValidation.js' %}"></script>
+  <script src="{% static 'Alphabo_app/js/contact_me.js' %}"></script>
+
+  <!-- Theme JavaScript -->
+  <script src="{% static 'Alphabo_app/js/clean-blog.min.js' %}"></script>
+
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
   </script> 
-  <script type="text/javascript">
-    function initIndex(){
-      firebase.auth().onAuthStateChanged(function(user) {
-	if(user){
-	 var displayName = user.displayName;
-         var email = user.email;
-         var emailVerified = user.emailVerified;
-	 var uid = user.uid; 
-	 document.querySelector('#user-name').innerHTML = displayName;
-  	}
-	else{
-	  window.location.replace("http://alphabo.tk:8000/alphabo/login/");
-	}
-        });
-    }
-
-    window.onload = function() {
-      initIndex(); 
-    };
-   
+  <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js">
   </script>
+  <script>
+
+  // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB9xJrcozUiwH41Fw3SoJ6lr4FsgY4qKsA",
+      authDomain: "alphabo-79bbc.firebaseapp.com",
+      databaseURL: "https://alphabo-79bbc.firebaseio.com",
+      storageBucket: "alphabo-79bbc.appspot.com",
+    };
+    firebase.initializeApp(config);
+  </script>
+
+
 
 
 {% endblock %}
 
 {% block mainbar %}
-  <div class="user-window-wrapper">
-    <div id="user-name-wrapper">
-     <div id="user-description">
-       username: 
-     </div>
-     <div id="user-name"> 
-     </div>
-  </div>
-  <div class="user-window-wrapper">
-    <div id=game-start-button">
-      <form action="http://alphabo.tk:8000/alphabo/game/">
-        <button class="btn" type="submit">Game Start</button>
-      </form> 
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="{% url 'index' %}">Alphabo</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'game' %}">Game Start</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}">Contact</a>
+                    </li>
+                    <li>
+		    {% if current_user %}
+		       <input type="hidden" id="user" name="userVariable" value="{{ current_user }}">
+			<a class="user-logout" href="{% url 'logout'%}">Logout</a>
+		    {% else %}
+		      <a class="facebook-logout" href="#">Logout </a>
+		    {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1 class="main-introduce">Alphabo</h1>
+                        <hr class="small">
+                        <span class="subheading">Alphabo tutorial page </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">
+                        안녕하세요 
+                        {% if current_user %} 
+                          <span id="django_user">{{ current_user.username }}님. </span>
+                        {% else %}
+                          <p id="facebook_user"> </p>
+                        {% endif %} 
+                        알파보의 세계에 오신걸 환영합니다. 
+
+                        </h2>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Hyung Chul Park</a> on July 16 , 2016</p>
+                </div>
+                <hr>
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">
+                          알파보와 가위바위보 대결을 하여 승리해보세요! 
+                        </h2>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Hyung Chul Park</a> on July 16, 2016</p>
+                </div>
+                <hr>
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">
+                           게임시작 버튼을 누르게 되면 게임이 시작됩니다.
+                        </h2>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Hyung Chul Park</a> on July 16, 2016</p>
+                </div>
+                <hr>
+                <div class="post-preview">
+                    <a href="#">
+                        <h2 class="post-title">
+                          가위 바위 보중에 하나를 선택하고 대결하기 버튼을 눌러주세요.
+                        </h2>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 16, 2016</p>
+                </div>
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="{% url 'game' %}">Game Start&rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div> 
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 {% endblock %}
 
-{% block outofcontainer %}
-
-{% endblock %}

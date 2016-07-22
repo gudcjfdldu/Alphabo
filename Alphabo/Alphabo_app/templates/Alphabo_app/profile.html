@@ -5,23 +5,18 @@
   {{ block.super }}
   <script src="{% static 'Alphabo_app/libs/jquery.js' %}"></script>
   <link rel="stylesheet" type="text/css"
-        href="{% static 'Alphabo_app/css/game.css' %}" />
-  <link rel="stylesheet" type="text/css"
-        href="{% static 'Alphabo_app/css/image-picker.css' %}" />
+        href="{% static 'Alphabo_app/css/profile.css' %}" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
   </script> 
 
-  <script src="{% static 'Alphabo_app/js/image-picker.js' %}" />
-  </script>
-  <script src="{% static 'Alphabo_app/js/game.js' %}" />
-  </script>  
-
 {% endblock %}
 
 {% block mainbar %}
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -59,37 +54,94 @@
         <!-- /.container -->
     </nav>
  
-<header class="intro-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="site-heading">
-          <h1 class="main-introduce">
-            Human vs Computer Rock game     
-          </h1>
-          <hr class="small">
-            <select class="image-picker">
-              <option data-img-src="{% static 'Alphabo_app/images/kawi.png' %}"
-          value="1"> kawi </option>
-              <option data-img-src="{% static 'Alphabo_app/images/bawi.png' %}" 
-          value="2"> bawi </option>
-              <option data-img-src="{% static 'Alphabo_app/images/bo.png' %}" 
-          value="3"> bo </option>
-            </select>
-        </div>
-        <div class="game-result-wrapper">
-          <h2 id="game-result">
-            
-          </h2>
-        </div>   
+<div class="row">
 
-        <div class="play-game">
-          <button type="button" class="btn btn-primary">컴퓨터와 대결하기</button>
-        </div>
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+
+           <a href="{% url 'index' %}" >main page</A>
+
       </div>
-    </div>
-  </div>
-</header>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+   
+
+   
+
+          <div class="panel">
+
+            <div class="panel-heading">
+
+              <h3 class="panel-title">Hyung Chul Park</h3>
+
+            </div>
+
+            <div class="panel-body">
+
+              <div class="row">
+
+                <div class=" col-md-9 col-lg-9 "> 
+
+                  <table class="table table-user-information">
+
+                    <tbody>
+
+                      <tr>
+
+                        <td>Department:</td>
+
+                        <td>Programming</td>
+
+                      </tr>
+
+                      <tr>
+
+                        <td>Date of Birth</td>
+
+                        <td>05/16/1994</td>
+
+                      </tr>
+
+                        <td>Gender</td>
+
+                        <td>Male</td>
+
+                      </tr>
+
+                      <tr>
+
+                        <td>Email</td>
+
+                        <td><a href="mailto:xlazks01@gmail.com.com">xlazks01@gmail.com</a></td>
+
+                      </tr>
+
+                        <td>Phone Number</td>
+
+                        <td>010-6416-2623(Mobile)
+
+                        </td>
+
+                      </tr>
+
+                     
+
+                    </tbody>
+
+                  </table>
+
+                  
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
 
 {% endblock %}
 
