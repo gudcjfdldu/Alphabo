@@ -126,11 +126,11 @@ def time_handler(request):
             profile = get_object_or_404(UserProfile, user=current_user)
             install_time = request.POST.get('installtime', '')
             exit_time = request.POST.get('exittime', '')
+ 
             profile.update(install_time, exit_time)
-            return HttpResponseRedirect(reverse('index'))
+            return HttpResponseRedirect(reverse('login'))
 
     elif request.method == 'GET':
-        print 'get request'
         return HttpResponseRedirect(reverse('login'))
 
 
