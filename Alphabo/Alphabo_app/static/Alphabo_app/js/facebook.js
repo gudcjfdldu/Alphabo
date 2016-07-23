@@ -88,7 +88,8 @@
         var uid = facebook_user.uid;
         var refreshToken = facebook_user.refreshToken;
         var providerData = facebook_user.providerData; 
-
+       
+        location.href = "http://alphabo.tk:8000/alphabo/";
 
           // [START_EXCLUDE]
         document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';

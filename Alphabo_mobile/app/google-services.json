@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "693059847711",
+    "firebase_url": "https://alphabo-79bbc.firebaseio.com",
+    "project_id": "alphabo-79bbc",
+    "storage_bucket": "alphabo-79bbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693059847711:android:f5697f3dcffb947f",
+        "android_client_info": {
+          "package_name": "com.project.alphabo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693059847711-8ah52s8pb2olvf40mrv8g9ht9vqs6raj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCit3Yq52URulvv201U1VlkjQOO5VGxLHc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
