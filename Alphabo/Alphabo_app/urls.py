@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^game/$', views.game_handler, name='game'),
     url(r'^contact/$', views.contact_handler, name='contact'),
     url(r'^time/$', views.time_handler, name='time'),
+    url(r'^private/$', views.private_handler, name='private'),
 ]

@@ -1,6 +1,6 @@
 import urllib
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
@@ -121,9 +121,17 @@ def register_handler(request):
        
 def time_handler(request):
     if request.method == 'POST':
-        install_time = request.POST.get('installtime', '')
-        exit_time = request.POST.get('exittime', '')
-        
+        if request.user.is_authenticated():
+            current_user = request.user
+            profile = get_object_or_404(UserProfile, user=current_user)
+            install_time = request.POST.get('installtime', '')
+            exit_time = request.POST.get('exittime', '')
+            profile.update(install_time, exit_time)
+            return HttpResponseRedirect(reverse('index'))
+
+    elif request.method == 'GET':
+        print 'get request'
+        return HttpResponseRedirect(reverse('login'))
 
 
 
@@ -133,4 +141,17 @@ def contact_handler(request):
             current_user = request.user
             context = {'current_user': current_user }
             return render(request, 'Alphabo_app/profile.html', context)
-        return render(request, 'Alphabo_app/profile.html') 
+        return render(request, 'Alphabo_app/profile.html')
+
+
+
+def private_handler(request):
+    if request.method == 'GET':
+        if request.user.is_authenticated():
+            current_user = request.user
+            context = {'current_user': current_user }
+            return render(request, 'Alphabo_app/private.html', context)
+        return render(request, 'Alphabo_app/private.html')
+
+
+

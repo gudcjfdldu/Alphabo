@@ -125,23 +125,4 @@
     initApp();
   };
 
-$(document).ready(function() {
-  var csrftoken = $.cookie('csrftoken');
-  
-  $.ajaxSetup({
-    beforeSend: function(xhr){
-      xhr.setRequestHeader("X-CSRFToken", csrftoken)
-    }
-  });
-
-  $.ajax({
-    type: "POST",
-    url: "/user/register/",
-    processData: false,
-    contentType: false,
-    data: 
-  });
-});
-
-
 
